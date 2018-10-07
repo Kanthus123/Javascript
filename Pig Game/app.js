@@ -9,7 +9,7 @@ GAME RULES:
 
 */
 
-var scores, roundscores, acPlayer, gamePlaying;
+var scores, roundscores, acPlayer, gamePlaying, scoreLimit;
 
 init();
 
@@ -38,7 +38,15 @@ document.querySelector('.btn-hold').addEventListener('click', function(){
 
         document.querySelector('#score-' + acPlayer).textContent = scores[acPlayer]; //atualiza os pontos do jogador
 
-    if(scores[acPlayer] >= 100){
+        scoreTotal = document.querySelector('.ipt-tot').value;
+        var alterado;
+
+        if(scoreTotal){
+          alterado = scoreTotal;
+        } else { alterado = 100; }
+
+
+    if(scores[acPlayer] >= alterado){
       document.querySelector('#name-'+ acPlayer).textContent = 'WINNER';
       document.querySelector('.dice').style.display = 'none';
       document.querySelector('.player-' + acPlayer + '-panel').classList.add('winner');
